@@ -1,11 +1,11 @@
-# Mi Segundo Addon V2 de Minecraft
+# Mi Tercer Addon de Minecraft
 
-Este es mi segundo addon v2 de Minecraft con recursos y comportamientos personalizados.
+Este es mi tercer addon de Minecraft con recursos y comportamientos personalizados.
 
 ## Estructura del Proyecto
 
 ```
-Mi_segundo_addon_v2/
+Mi_tercer_addon/
 ├── resources/
 │   ├── assets/
 │   │   └── modid/
