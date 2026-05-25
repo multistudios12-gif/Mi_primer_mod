@@ -1,4 +1,4 @@
-// Sistema de Menú Admin con Click Derecho
+// Sistema de Menú Admin con Papel
 // Requiere el tag 'admin' para funcionar
 
 import { world, system, ItemStack } from '@minecraft/server';
@@ -7,7 +7,7 @@ import { ActionFormData } from '@minecraft/server-ui';
 const ADMIN_TAG = 'admin';
 const PAPER_ID = 'minecraft:paper';
 
-// Evento que se dispara cuando un jugador usa un item
+// Evento que se dispara cuando un jugador usa un item (ANTES)
 world.beforeEvents.itemUse.subscribe((event) => {
   const player = event.source;
   const item = event.itemStack;
@@ -22,6 +22,9 @@ world.beforeEvents.itemUse.subscribe((event) => {
     return;
   }
 
+  // Prevenir el uso por defecto del papel
+  event.cancel = true;
+
   // Abrir el menú admin
   openAdminMenu(player);
 });
@@ -32,7 +35,7 @@ world.beforeEvents.itemUse.subscribe((event) => {
  */
 function openAdminMenu(player) {
   const form = new ActionFormData()
-    .title('🛡️ Sistema de Mime Prueba')
+    .title('🛡️ Sistema de Menú Admin')
     .body('Selecciona una acción administrativa');
 
   form.button('💀 Matar a Todos\n/kill @a', 'textures/ui/icon_multiplayer');
@@ -81,6 +84,8 @@ function executeKillAll(admin) {
     admin.runCommandAsync(command);
     admin.sendMessage('§6[ADMIN]§r §cComando ejecutado: /kill @a');
     broadcastAdminAction(admin, 'MATÓ A TODOS LOS JUGADORES');
+    // Ejecutar script event
+    world.sendMessage({ targets: admin }, 'scriptevent menu:prueba');
   } catch (error) {
     admin.sendMessage(`§c[ERROR]§r No se pudo ejecutar el comando: ${error}`);
   }
@@ -96,6 +101,8 @@ function executeSpectatorMode(admin) {
     admin.runCommandAsync(command);
     admin.sendMessage('§6[ADMIN]§r §aAhora estás en modo espectador');
     broadcastAdminAction(admin, 'ENTRÓ EN MODO ESPECTADOR');
+    // Ejecutar script event
+    world.sendMessage({ targets: admin }, 'scriptevent menu:prueba');
   } catch (error) {
     admin.sendMessage(`§c[ERROR]§r No se pudo cambiar el gamemode: ${error}`);
   }
