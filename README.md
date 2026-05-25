@@ -1,11 +1,11 @@
-# Mi Primer Mod de Minecraft
+# Mi Segundo Addon de Minecraft
 
-Este es mi primer mod de Minecraft con recursos y comportamientos personalizados.
+Este es mi segundo addon de Minecraft con recursos y comportamientos personalizados.
 
 ## Estructura del Proyecto
 
 ```
-Mi_primer_mod/
+Mi_segundo_addon/
 ├── resources/
 │   ├── assets/
 │   │   └── modid/
@@ -25,6 +25,6 @@ Mi_primer_mod/
 
 ## Instalación
 
-1. Descarga el mod
-2. Coloca la carpeta en tu carpeta de mods de Minecraft
+1. Descarga el addon
+2. Coloca la carpeta en tu carpeta de addons de Minecraft
 3. ¡Disfruta!
